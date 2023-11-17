@@ -1,0 +1,8 @@
+--> To Do list pour une équipe dans une entreprise. 
+Elle permet de gérer les utilisateurs, des listes de tâches, des tâches ainsi que l'assignation des tâches pour les différents membres de l'équipe.
+
+4 entités : 
+- Users
+- Liste de tâches
+- Tâches
+- Assignation de tâches
