@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
@@ -12,27 +11,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {},
-=======
-  "name": "dev-web",
-  "version": "1.0.0",
-  "description": "Nombre de personnes par groupe: 3\r Règles de constitution des groupes: Libre",
-  "main": "index.js",
->>>>>>> d43364e596830e66c86bf35756345f275c25dad4
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-<<<<<<< HEAD
   "license": "ISC"
-=======
-  "license": "ISC",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.2",
-    "mysql": "^2.18.1",
-    "mysql2": "^3.6.3",
-    "sequelize": "^6.35.1"
-  }
->>>>>>> d43364e596830e66c86bf35756345f275c25dad4
 }
