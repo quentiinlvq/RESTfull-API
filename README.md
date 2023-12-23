@@ -34,5 +34,5 @@ Respecter la norme RESTFULL
 Rendu
 Indiquer dans le champs de rendu :
 
-Lien Github publique
-Liste des pseudos Github associés au nom/prénom de l'étudiant
+- Lien Github publique
+- Liste des pseudos Github associés au nom/prénom de l'étudiant
