@@ -1,8 +1,9 @@
 --> To Do list pour une équipe dans une entreprise. 
-Elle permet de gérer les utilisateurs, des listes de tâches, des tâches ainsi que l'assignation des tâches pour les différents membres de l'équipe.
+Elle permet de gérer les utilisateurs, des listes de tâches, des tâches ainsi que l'assignation des tâches et les commentaires pour les différents membres de l'équipe.
 
-4 entités : 
+5 entités : 
 - Users (id_user, nom, prenom, mail, num, adresse)
-- Liste de tâches( nom_liste, id_tache... , created_at)
+- Liste de tâches ( nom_liste, id_tache... , created_at)
 - Tâches (id_tache, nom_tache, created_at)
 - Assignation de tâches (id_user, id_tache, statut, date)
+- Commentaire (id_commentaire, id_user, id_tache, contenu, date_commentaire)
