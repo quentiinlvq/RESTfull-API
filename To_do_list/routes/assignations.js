@@ -1,8 +1,9 @@
 const { Router } = require('express');
 const AssignationTache = require('../models/AssignationTache');
+const checkAuth = require("../middlewares/checkAuth");
 const router = new Router();
 
-router.get('/', async (req, res) => {
+router.get('/', checkAuth, async (req, res) => {
   try {
     const assignationsTaches = await AssignationTache.findAll();
     res.status(200).json(assignationsTaches);
@@ -11,7 +12,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', checkAuth, async (req, res) => {
   try {
     const nouvelleAssignationTache = await AssignationTache.create(req.body);
     res.status(201).json(nouvelleAssignationTache);
@@ -20,7 +21,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/:assignationId', async (req, res) => {
+router.get('/:assignationId', checkAuth, async (req, res) => {
   try {
     const assignationTache = await AssignationTache.findByPk(req.params.assignationId);
     if (!assignationTache) {
@@ -32,7 +33,7 @@ router.get('/:assignationId', async (req, res) => {
   }
 });
 
-router.put('/:assignationId', async (req, res) => {
+router.put('/:assignationId', checkAuth, async (req, res) => {
   try {
     const assignationTache = await AssignationTache.findByPk(req.params.assignationId);
     if (!assignationTache) {
@@ -45,7 +46,7 @@ router.put('/:assignationId', async (req, res) => {
   }
 });
 
-router.delete('/:assignationId', async (req, res) => {
+router.delete('/:assignationId', checkAuth, async (req, res) => {
   try {
     const assignationTache = await AssignationTache.findByPk(req.params.assignationId);
     if (!assignationTache) {

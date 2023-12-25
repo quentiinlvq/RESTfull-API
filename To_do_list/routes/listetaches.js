@@ -1,9 +1,10 @@
 const { Router } = require("express");
 const Tache = require("../models/Tache.js");
-const ListeTaches = require("../models/ListeTaches.js")
+const ListeTaches = require("../models/ListeTaches.js");
+const checkAuth = require("../middlewares/checkAuth");
 const router = new Router();
 
-router.get('/listetaches', async (req, res) => {
+router.get('/listetaches', checkAuth, async (req, res) => {
     try {
         const listesTaches = await ListeTaches.findAll();
         res.status(200).json(listesTaches);
@@ -12,7 +13,7 @@ router.get('/listetaches', async (req, res) => {
     }
 });
 
-router.post('/listetaches', async (req, res) => {
+router.post('/listetaches', checkAuth, async (req, res) => {
     try {
         const nouvelleListeTaches = await ListeTaches.create(req.body);
         res.status(201).json(nouvelleListeTaches);
@@ -21,7 +22,7 @@ router.post('/listetaches', async (req, res) => {
     }
 });
 
-router.get('/listetaches/:listeId', async (req, res) => {
+router.get('/listetaches/:listeId', checkAuth, async (req, res) => {
     try {
         const listeTaches = await ListeTaches.findByPk(req.params.listeId);
         if (!listeTaches) {
@@ -33,7 +34,7 @@ router.get('/listetaches/:listeId', async (req, res) => {
     }
 });
 
-router.put('/listetaches/:listeId', async (req, res) => {
+router.put('/listetaches/:listeId', checkAuth, async (req, res) => {
     try {
         const listeTaches = await ListeTaches.findByPk(req.params.listeId);
         if (!listeTaches) {
@@ -46,7 +47,7 @@ router.put('/listetaches/:listeId', async (req, res) => {
     }
 });
 
-router.delete('/listetaches/:listeId', async (req, res) => {
+router.delete('/listetaches/:listeId', checkAuth, async (req, res) => {
     try {
         const listeTaches = await ListeTaches.findByPk(req.params.listeId);
         if (!listeTaches) {

@@ -1,8 +1,9 @@
 const { Router } = require("express");
 const Tache = require("../models/Tache");
+const checkAuth = require("../middlewares/checkAuth");
 const router = new Router();
 
-router.get('/taches', async (req, res) => {
+router.get('/taches', checkAuth, async (req, res) => {
     try {
         const taches = await Tache.findAll();
         res.status(200).json(taches);
@@ -11,7 +12,7 @@ router.get('/taches', async (req, res) => {
     }
 });
 
-router.post('/taches', async (req, res) => {
+router.post('/taches', checkAuth, async (req, res) => {
     try {
         const nouvelleTache = await Tache.create(req.body);
         res.status(201).json(nouvelleTache);
@@ -20,7 +21,7 @@ router.post('/taches', async (req, res) => {
     }
 });
 
-router.get('/taches/:tacheId', async (req, res) => {
+router.get('/taches/:tacheId', checkAuth, async (req, res) => {
     try {
         const tache = await Tache.findByPk(req.params.tacheId);
         if (!tache) {
@@ -32,7 +33,7 @@ router.get('/taches/:tacheId', async (req, res) => {
     }
 });
 
-router.put('/taches/:tacheId', async (req, res) => {
+router.put('/taches/:tacheId', checkAuth, async (req, res) => {
     try {
         const tache = await Tache.findByPk(req.params.tacheId);
         if (!tache) {
@@ -45,7 +46,7 @@ router.put('/taches/:tacheId', async (req, res) => {
     }
 });
 
-router.delete('/taches/:tacheId', async (req, res) => {
+router.delete('/taches/:tacheId', checkAuth, async (req, res) => {
     try {
         const tache = await Tache.findByPk(req.params.tacheId);
         if (!tache) {

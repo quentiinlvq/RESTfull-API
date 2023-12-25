@@ -1,8 +1,9 @@
 const { Router } = require("express");
 const User = require("../models/User");
+const checkAuth = require("../middlewares/checkAuth");
 const router = new Router();
 
-router.get("/users", async (req, res, next) => {
+router.get("/users", checkAuth, async (req, res, next) => {
   if (req.userId) {
     req.query.id = req.userId;
   }
@@ -13,7 +14,7 @@ router.get("/users", async (req, res, next) => {
   );
 });
 
-router.post("/users", async (req, res, next) => {
+router.post("/users", checkAuth, async (req, res, next) => {
   try {
     res.status(201).json(await User.create(req.body));
   } catch (err) {
@@ -23,7 +24,7 @@ router.post("/users", async (req, res, next) => {
   }
 });
 
-router.get("/users/:id", async (req, res, next) => {
+router.get("/users/:id", checkAuth, async (req, res, next) => {
   const user = await User.findByPk(parseInt(req.params.id));
   if (user) {
     res.json(user);
@@ -33,7 +34,7 @@ router.get("/users/:id", async (req, res, next) => {
   }
 });
 
-router.patch("/users/:id", async (req, res, next) => {
+router.patch("/users/:id", checkAuth, async (req, res, next) => {
   if (req.userId !== parseInt(req.params.id)) res.sendStatus(403);
   try {
     const result = await User.update(req.body, {
@@ -54,7 +55,7 @@ router.patch("/users/:id", async (req, res, next) => {
   }
 });
 
-router.delete("/users/:id", async (req, res, next) => {
+router.delete("/users/:id", checkAuth, async (req, res, next) => {
   const result = await User.destroy({
     where: {
       id: parseInt(req.params.id),

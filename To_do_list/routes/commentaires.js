@@ -1,8 +1,9 @@
 const { Router } = require("express");
-const Commentaire = require("../models/Commentaire.js")
+const Commentaire = require("../models/Commentaire.js");
+const checkAuth = require("../middlewares/checkAuth");
 const router = new Router();
 
-router.get('/commentaires', async (req, res) => {
+router.get('/commentaires', checkAuth, async (req, res) => {
     try {
         const commentaires = await Commentaire.findAll();
         res.status(200).json(commentaires);
@@ -11,7 +12,7 @@ router.get('/commentaires', async (req, res) => {
     }
 });
 
-router.post('/commentaires', async (req, res) => {
+router.post('/commentaires', checkAuth, async (req, res) => {
     try {
         const nouveauCommentaire = await Commentaire.create(req.body);
         res.status(201).json(nouveauCommentaire);
@@ -20,7 +21,7 @@ router.post('/commentaires', async (req, res) => {
     }
 });
 
-router.get('/commentaires/:commentaireId', async (req, res) => {
+router.get('/commentaires/:commentaireId', checkAuth, async (req, res) => {
     try {
         const commentaire = await Commentaire.findByPk(req.params.commentaireId);
         if (!commentaire) {
@@ -32,7 +33,7 @@ router.get('/commentaires/:commentaireId', async (req, res) => {
     }
 });
 
-router.put('/commentaires/:commentaireId', async (req, res) => {
+router.put('/commentaires/:commentaireId', checkAuth, async (req, res) => {
     try {
         const commentaire = await Commentaire.findByPk(req.params.commentaireId);
         if (!commentaire) {
@@ -45,7 +46,7 @@ router.put('/commentaires/:commentaireId', async (req, res) => {
     }
 });
 
-router.delete('/commentaires/:commentaireId', async (req, res) => {
+router.delete('/commentaires/:commentaireId', checkAuth, async (req, res) => {
     try {
         const commentaire = await Commentaire.findByPk(req.params.commentaireId);
         if (!commentaire) {
