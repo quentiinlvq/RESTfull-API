@@ -1,0 +1,28 @@
+GET http://localhost:3000
+
+###
+
+POST http://localhost:3000
+Content-Type: application/json
+
+{
+    "name": "John"
+}
+
+### 
+
+PUT http://localhost:3000
+Content-Type: application/json
+
+{
+    "name": "John"
+}
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "email": "j5@j.com",
+    "password": "Azerty123!"
+}
