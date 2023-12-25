@@ -1,9 +1,9 @@
---> To Do list pour une équipe dans une entreprise. 
-Elle permet de gérer les utilisateurs, des listes de tâches, des tâches ainsi que l'assignation des tâches et les commentaires pour les différents membres de l'équipe.
+--> To Do list utile pour les travaux en équipe dans une entreprise (type Trello)
+Elle permet aux utilisateurs d'une équipe de gérer les tâches, de les lister, de les créer, de les assigner aux membres du groupe et de mettre des commentaires
 
-5 entités : 
-- Users (id_user, nom, prenom, mail, num, adresse)
-- Liste de tâches ( nom_liste, id_tache... , created_at)
+Les 5 entités principales de notre To Do List sont : 
+- Users (id_user, mail, passwd, rôle)
+- Liste de tâches ( nom_liste, id_tache, created_at)
 - Tâches (id_tache, nom_tache, created_at)
-- Assignation de tâches (id_user, id_tache, statut, date)
+- Assignation de tâches (id_tache, id_user, statut, date)
 - Commentaire (id_commentaire, id_user, id_tache, contenu, date_commentaire)
