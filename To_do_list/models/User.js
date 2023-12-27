@@ -6,13 +6,10 @@ class User extends Model { }
 
 User.init(
   {
-    email: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      validate: {
-        isEmail: true,
-      },
     },
     password: {
       type: DataTypes.STRING,
@@ -28,7 +25,7 @@ User.init(
       defaultValue: "user",
     },
     lastname: DataTypes.STRING,
-    firstname: DataTypes.STRING,  
+    firstname: DataTypes.STRING,
     dob: DataTypes.DATE,
   },
   {
@@ -37,11 +34,11 @@ User.init(
 );
 
 User.addHook("beforeCreate", (user) => {
-  user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
+  user.password = bcrypt.hashSync(user.password, 10);
 });
 User.addHook("beforeUpdate", (user, options) => {
   if (options.fields.includes("password")) {
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
+    user.password = bcrypt.hashSync(user.password, 10); 
   }
 });
 
