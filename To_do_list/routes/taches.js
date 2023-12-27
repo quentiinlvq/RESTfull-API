@@ -21,9 +21,9 @@ router.post('/taches', checkAuth, async (req, res) => {
     }
 });
 
-router.get('/taches/:tacheId', checkAuth, async (req, res) => {
+router.get('/taches/:id', checkAuth, async (req, res) => {
     try {
-        const tache = await Tache.findByPk(req.params.tacheId);
+        const tache = await Tache.findByPk(req.params.id);
         if (!tache) {
             return res.status(404).json({ message: 'Tâche non trouvée...' });
         }
@@ -33,9 +33,9 @@ router.get('/taches/:tacheId', checkAuth, async (req, res) => {
     }
 });
 
-router.put('/taches/:tacheId', checkAuth, async (req, res) => {
+router.put('/taches/:id', checkAuth, async (req, res) => {
     try {
-        const tache = await Tache.findByPk(req.params.tacheId);
+        const tache = await Tache.findByPk(req.params.id);
         if (!tache) {
             return res.status(404).json({ message: 'Tâche non trouvée...' });
         }
@@ -46,9 +46,9 @@ router.put('/taches/:tacheId', checkAuth, async (req, res) => {
     }
 });
 
-router.delete('/taches/:tacheId', checkAuth, async (req, res) => {
+router.delete('/taches/:id', checkAuth, async (req, res) => {
     try {
-        const tache = await Tache.findByPk(req.params.tacheId);
+        const tache = await Tache.findByPk(req.params.id);
         if (!tache) {
             return res.status(404).json({ message: 'Tâche non trouvée...' });
         }

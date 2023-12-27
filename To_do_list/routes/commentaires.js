@@ -21,9 +21,9 @@ router.post('/commentaires', checkAuth, async (req, res) => {
     }
 });
 
-router.get('/commentaires/:commentaireId', checkAuth, async (req, res) => {
+router.get('/commentaires/:id', checkAuth, async (req, res) => {
     try {
-        const commentaire = await Commentaire.findByPk(req.params.commentaireId);
+        const commentaire = await Commentaire.findByPk(req.params.id);
         if (!commentaire) {
             return res.status(404).json({ message: 'Commentaire non trouvé...' });
         }
@@ -33,9 +33,9 @@ router.get('/commentaires/:commentaireId', checkAuth, async (req, res) => {
     }
 });
 
-router.put('/commentaires/:commentaireId', checkAuth, async (req, res) => {
+router.put('/commentaires/:id', checkAuth, async (req, res) => {
     try {
-        const commentaire = await Commentaire.findByPk(req.params.commentaireId);
+        const commentaire = await Commentaire.findByPk(req.params.id);
         if (!commentaire) {
             return res.status(404).json({ message: 'Commentaire non trouvé...' });
         }
@@ -46,9 +46,9 @@ router.put('/commentaires/:commentaireId', checkAuth, async (req, res) => {
     }
 });
 
-router.delete('/commentaires/:commentaireId', checkAuth, async (req, res) => {
+router.delete('/commentaires/:id', checkAuth, async (req, res) => {
     try {
-        const commentaire = await Commentaire.findByPk(req.params.commentaireId);
+        const commentaire = await Commentaire.findByPk(req.params.id);
         if (!commentaire) {
             return res.status(404).json({ message: 'Commentaire non trouvé...' });
         }

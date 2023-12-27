@@ -22,9 +22,9 @@ router.post('/listetaches', checkAuth, async (req, res) => {
     }
 });
 
-router.get('/listetaches/:listeId', checkAuth, async (req, res) => {
+router.get('/listetaches/:id', checkAuth, async (req, res) => {
     try {
-        const listeTaches = await ListeTaches.findByPk(req.params.listeId);
+        const listeTaches = await ListeTaches.findByPk(req.params.id);
         if (!listeTaches) {
             return res.status(404).json({ message: 'Liste de tâches non trouvée...' });
         }
@@ -34,9 +34,9 @@ router.get('/listetaches/:listeId', checkAuth, async (req, res) => {
     }
 });
 
-router.put('/listetaches/:listeId', checkAuth, async (req, res) => {
+router.put('/listetaches/:id', checkAuth, async (req, res) => {
     try {
-        const listeTaches = await ListeTaches.findByPk(req.params.listeId);
+        const listeTaches = await ListeTaches.findByPk(req.params.id);
         if (!listeTaches) {
             return res.status(404).json({ message: 'Liste de tâches non trouvée...' });
         }
@@ -47,9 +47,9 @@ router.put('/listetaches/:listeId', checkAuth, async (req, res) => {
     }
 });
 
-router.delete('/listetaches/:listeId', checkAuth, async (req, res) => {
+router.delete('/listetaches/:id', checkAuth, async (req, res) => {
     try {
-        const listeTaches = await ListeTaches.findByPk(req.params.listeId);
+        const listeTaches = await ListeTaches.findByPk(req.params.id);
         if (!listeTaches) {
             return res.status(404).json({ message: 'Liste de tâches non trouvée...' });
         }

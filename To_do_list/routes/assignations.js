@@ -21,9 +21,9 @@ router.post('/', checkAuth, async (req, res) => {
   }
 });
 
-router.get('/:assignationId', checkAuth, async (req, res) => {
+router.get('/:id', checkAuth, async (req, res) => {
   try {
-    const assignationTache = await AssignationTache.findByPk(req.params.assignationId);
+    const assignationTache = await AssignationTache.findByPk(req.params.id);
     if (!assignationTache) {
       return res.status(404).json({ message: 'Assignation de tâche non trouvée...' });
     }
@@ -33,9 +33,9 @@ router.get('/:assignationId', checkAuth, async (req, res) => {
   }
 });
 
-router.put('/:assignationId', checkAuth, async (req, res) => {
+router.put('/:id', checkAuth, async (req, res) => {
   try {
-    const assignationTache = await AssignationTache.findByPk(req.params.assignationId);
+    const assignationTache = await AssignationTache.findByPk(req.params.id);
     if (!assignationTache) {
       return res.status(404).json({ message: 'Assignation de tâche non trouvée...' });
     }
@@ -46,9 +46,9 @@ router.put('/:assignationId', checkAuth, async (req, res) => {
   }
 });
 
-router.delete('/:assignationId', checkAuth, async (req, res) => {
+router.delete('/:id', checkAuth, async (req, res) => {
   try {
-    const assignationTache = await AssignationTache.findByPk(req.params.assignationId);
+    const assignationTache = await AssignationTache.findByPk(req.params.id);
     if (!assignationTache) {
       return res.status(404).json({ message: 'Assignation de tâche non trouvée...' });
     }
