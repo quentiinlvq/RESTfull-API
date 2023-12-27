@@ -1,28 +1,47 @@
-GET http://localhost:3000
-
-###
-
-POST http://localhost:3000
+### Connexion au rôle d'admin
+POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "name": "John"
+"username": "quentinlvq",
+"password": "EsilvBachelor123!"
 }
 
-### 
-
-PUT http://localhost:3000
+### Connexion au rôle de user
+POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "name": "John"
+"username": "quentin",
+"password": "Esilv123!"
 }
 
-###
+### Créer un nouvel utilisateur
 POST http://localhost:3000/users
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImlhdCI6MTcwMzY0NDExMiwiZXhwIjoxNzExNDIwMTEyfQ.G-bNobiIufH9Fr6yWyB3KoHtDNaKQUQOnllwU_BSA_w
 
 {
-    "email": "j5@j.com",
-    "password": "Azerty123!"
+  "username": "test2",
+  "password": "Quentinnn2102!"
 }
+
+### Mettre à jour un user
+PUT http://localhost:3000/users/12
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImlhdCI6MTcwMzY0NDExMiwiZXhwIjoxNzExNDIwMTEyfQ.G-bNobiIufH9Fr6yWyB3KoHtDNaKQUQOnllwU_BSA_w
+
+{
+  "username": "test2",
+  "password": "Lucas123!",
+  "lastname" : "Robin"
+}
+
+### Requête GET pour obtenir tous les utilisateurs
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImlhdCI6MTcwMzY0MzgyNCwiZXhwIjoxNzExNDE5ODI0fQ.yxHTw2Op7aT6s38z6lR_WSpryN16aIi-TImFZyO3k4g
+Content-Type: application/json
+
+### Supprimer l'user avec l'id 12
+DELETE http://localhost:3000/users/12
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImlhdCI6MTcwMzYzODU5MiwiZXhwIjoxNzExNDE0NTkyfQ.0riFv6xAeT5vX92AVuj6zEZh53S_7ZtA-fq6NyM2Qbk
